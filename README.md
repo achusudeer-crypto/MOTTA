@@ -1,0 +1,1 @@
+MOTTA is an intentionally useless rage-bait browser game where players must keep an egg alive for 60 seconds. The game features funny reactions, unexpected challenges, sound effects, and humorous messages. Even if the player successfully survives the full 60 seconds, the egg cracks anyway. Built using HTML, CSS, and JavaScript.
