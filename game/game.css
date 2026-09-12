@@ -1,0 +1,751 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Trebuchet MS", sans-serif;
+    color: #4d321f;
+    background: #d99b52;
+}
+
+
+/* =========================================
+   DESERT BACKGROUND
+========================================= */
+
+.game-page {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background-image: url("../assets/1.png");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.game-page::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 210, 120, 0.04),
+        rgba(255, 165, 70, 0.08)
+    );
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.game-page::after {
+    content: none;
+}
+
+
+/* =========================================
+   TOP BAR
+========================================= */
+
+.top-bar {
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 22px 35px;
+
+    z-index: 30;
+}
+
+.game-name {
+    font-family: "Bangers", cursive;
+
+    font-size: 34px;
+    font-weight: bold;
+
+    letter-spacing: 4px;
+
+    color: #fff0c7;
+
+    text-shadow:
+        3px 3px 0 #63381f,
+        5px 5px 0 rgba(70, 37, 20, 0.35);
+
+    transform: rotate(-2deg);
+}
+
+.timer {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 4px;
+
+    background: rgba(255, 224, 157, 0.94);
+
+    border: 3px solid #63381f;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    color: #5c351e;
+
+    box-shadow:
+        4px 5px 0 rgba(70, 37, 20, 0.35);
+
+    transform: rotate(2deg);
+
+    transition: transform 0.2s ease;
+}
+
+.timer.warning {
+    animation: timerWarning 0.5s ease;
+}
+
+@keyframes timerWarning {
+
+    0% {
+        transform: rotate(2deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(-4deg) scale(1.18);
+    }
+
+    100% {
+        transform: rotate(2deg) scale(1);
+    }
+}
+
+
+/* =========================================
+   TOP NOTE
+========================================= */
+
+.game-note {
+    position: absolute;
+
+    top: 90px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-1deg);
+
+    padding: 8px 17px;
+
+    background: rgba(250, 219, 159, 0.94);
+
+    border: 2px solid #754326;
+
+    color: #5e371f;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    box-shadow:
+        3px 4px 0 rgba(72, 39, 21, 0.28);
+
+    z-index: 25;
+}
+
+.game-note::before {
+    content: "";
+
+    position: absolute;
+
+    width: 45px;
+    height: 11px;
+
+    top: -7px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+    background: rgba(255, 225, 158, 0.8);
+
+    border: 1px solid rgba(133, 83, 40, 0.15);
+}
+
+
+/* =========================================
+   GAME AREA
+========================================= */
+
+.game-area {
+    position: relative;
+
+    width: 100%;
+    height: calc(100vh - 90px);
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   INSTRUCTION
+========================================= */
+
+.instruction {
+    position: relative;
+
+    margin-bottom: 18px;
+
+    padding: 9px 18px;
+
+    background: rgba(255, 230, 173, 0.94);
+
+    border: 3px solid #70401f;
+
+    border-radius: 3px;
+
+    color: #60381f;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    text-align: center;
+
+    box-shadow:
+        4px 4px 0 rgba(76, 41, 21, 0.35);
+
+    transform: rotate(-1deg);
+
+    z-index: 30;
+}
+
+
+/* =========================================
+   EGG
+========================================= */
+
+.egg-wrapper {
+    position: relative;
+
+    width: 270px;
+    height: 270px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 20;
+}
+
+.egg-wrapper::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    width: 170px;
+    height: 42px;
+
+    transform: translateX(-50%);
+
+    background: rgba(187, 119, 48, 0.48);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 7px 0 rgba(95, 52, 24, 0.16);
+
+    z-index: -1;
+}
+
+.egg-game {
+    position: relative;
+
+    width: 180px;
+    height: 220px;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+
+    z-index: 5;
+}
+
+.egg-game img {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    user-select: none;
+    pointer-events: none;
+}
+
+#eggImage {
+    display: block;
+
+    filter:
+        drop-shadow(
+            5px 8px 4px rgba(63, 35, 18, 0.30)
+        );
+}
+
+#crackedEggImage {
+    display: none;
+
+    filter:
+        drop-shadow(
+            5px 8px 4px rgba(63, 35, 18, 0.30)
+        );
+}
+
+#failedEggImage {
+    display: none;
+
+    transform: scale(0.2);
+
+    transform-origin: center center;
+}
+
+
+/* =========================================
+   SCARED EGG
+========================================= */
+
+.egg-game.scared {
+    animation: scared 0.35s ease;
+}
+
+@keyframes scared {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform:
+            translateX(-8px)
+            rotate(-3deg);
+    }
+
+    50% {
+        transform:
+            translateX(8px)
+            rotate(3deg);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message {
+    min-height: 30px;
+
+    margin-top: 16px;
+
+    padding: 7px 16px;
+
+    background: rgba(255, 226, 166, 0.88);
+
+    border: 2px solid rgba(100, 55, 27, 0.55);
+
+    border-radius: 3px;
+
+    color: #5d351e;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    text-align: center;
+
+    opacity: 0.95;
+
+    transform: rotate(1deg);
+
+    box-shadow:
+        3px 3px 0 rgba(68, 37, 19, 0.22);
+
+    z-index: 30;
+}
+
+.message.pop {
+    animation: messagePop 0.3s ease;
+}
+
+@keyframes messagePop {
+
+    0% {
+        transform:
+            rotate(1deg)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            rotate(-2deg)
+            scale(1.08);
+    }
+
+    100% {
+        transform:
+            rotate(1deg)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   START BUTTON
+========================================= */
+
+#startButton {
+    margin-top: 16px;
+
+    padding: 13px 38px;
+
+    border: 3px solid #49301d;
+
+    border-radius: 4px;
+
+    background: #71864c;
+
+    color: #fff3ce;
+
+    font-family: "Trebuchet MS", sans-serif;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 0 #4b321f;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+
+    z-index: 35;
+}
+
+#startButton:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 0 #4b321f;
+}
+
+#startButton:active {
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 0 #4b321f;
+}
+
+
+/* =========================================
+   PEPPA
+========================================= */
+
+#failedEggImage.peppa-grow {
+    animation:
+        peppaGrow 1.2s ease-in forwards,
+        peppaShake 0.5s ease-in-out 1.2s infinite;
+}
+
+@keyframes peppaGrow {
+
+    0% {
+        transform: scale(0.2);
+    }
+
+    35% {
+        transform: scale(0.6);
+    }
+
+    65% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1.4);
+    }
+}
+
+@keyframes peppaShake {
+
+    0% {
+        transform:
+            scale(1.4)
+            translateX(0);
+    }
+
+    20% {
+        transform:
+            scale(1.4)
+            translateX(-12px);
+    }
+
+    40% {
+        transform:
+            scale(1.4)
+            translateX(12px);
+    }
+
+    60% {
+        transform:
+            scale(1.4)
+            translateX(-12px);
+    }
+
+    80% {
+        transform:
+            scale(1.4)
+            translateX(12px);
+    }
+
+    100% {
+        transform:
+            scale(1.4)
+            translateX(0);
+    }
+}
+
+
+/* =========================================
+   GAME OVER
+========================================= */
+
+.game-over {
+    animation:
+        gameOver 0.7s ease forwards;
+
+    color: #fff0c5;
+
+    text-shadow:
+        3px 3px 0 #63381d;
+}
+
+@keyframes gameOver {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.15)
+            rotate(3deg);
+    }
+
+    100% {
+        transform: scale(0.95);
+    }
+}
+
+
+/* =========================================
+   BOTTOM NOTES
+========================================= */
+
+.bottom-note {
+    position: absolute;
+
+    bottom: 18px;
+
+    padding: 7px 11px;
+
+    background: rgba(250, 219, 159, 0.82);
+
+    border: 2px solid rgba(112, 64, 31, 0.7);
+
+    color: #63391f;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    line-height: 1.4;
+
+    box-shadow:
+        3px 3px 0 rgba(72, 39, 21, 0.2);
+
+    z-index: 25;
+}
+
+.bottom-note.left {
+    left: 25px;
+
+    transform: rotate(-2deg);
+}
+
+.bottom-note.right {
+    right: 25px;
+
+    transform: rotate(2deg);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .top-bar {
+        padding: 17px 20px;
+    }
+
+    .game-name {
+        font-size: 24px;
+        letter-spacing: 3px;
+    }
+
+    .timer {
+        width: 58px;
+        height: 58px;
+
+        font-size: 18px;
+    }
+
+    .game-note {
+        top: 76px;
+
+        font-size: 11px;
+
+        padding: 7px 12px;
+    }
+
+    .instruction {
+        margin-bottom: 12px;
+
+        padding: 8px 13px;
+
+        font-size: 13px;
+    }
+
+    .egg-wrapper {
+        width: 220px;
+        height: 220px;
+    }
+
+    .egg-game {
+        width: 155px;
+        height: 195px;
+    }
+
+    .egg-wrapper::after {
+        width: 145px;
+        height: 35px;
+
+        bottom: 14px;
+    }
+
+    .message {
+        margin-top: 10px;
+
+        font-size: 13px;
+
+        padding: 6px 12px;
+    }
+
+    #startButton {
+        padding: 11px 30px;
+
+        font-size: 14px;
+    }
+
+    .game-over {
+        font-size: 20px;
+    }
+
+    .bottom-note {
+        display: none;
+    }
+}
+
+
+/* =========================================
+   SHORT SCREENS
+========================================= */
+
+@media (max-height: 650px) {
+
+    .top-bar {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    .game-note {
+        top: 65px;
+    }
+
+    .instruction {
+        margin-bottom: 7px;
+    }
+
+    .egg-wrapper {
+        height: 205px;
+    }
+
+    .egg-game {
+        width: 140px;
+        height: 175px;
+    }
+
+    .message {
+        margin-top: 6px;
+    }
+
+    #startButton {
+        margin-top: 9px;
+    }
+}

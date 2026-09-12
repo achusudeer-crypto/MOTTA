@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MOTTA — The Game</title>
+
+    <link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+
+    <main class="game-page">
+
+        <!-- TOP BAR -->
+        <header class="top-bar">
+
+            <div class="game-name">
+                motta
+            </div>
+
+            <div class="timer" id="timer">
+                60
+            </div>
+
+        </header>
+
+
+        <!-- SMALL NOTE -->
+        <div class="game-note">
+            keep me alive.
+        </div>
+
+
+        <!-- GAME AREA -->
+        <section class="game-area">
+
+            <p class="instruction" id="instruction">
+                protect the egg for 60 seconds.
+            </p>
+
+
+            <!-- EGG -->
+            <div class="egg-wrapper" id="eggWrapper">
+
+                <div class="egg-game" id="egg">
+
+                    <img
+                        src="../assets/simplemotta-removebg-preview.png"
+                        alt="Egg"
+                        id="eggImage"
+                    >
+
+                    <img
+                        src="../assets/crackedegg-removebg-preview.png"
+                        alt="Cracked egg"
+                        id="crackedEggImage"
+                    >
+
+                    <img
+                        src="../assets/peppapig-removebg-preview.png"
+                        alt="Peppa Pig"
+                        id="failedEggImage"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+            <div class="message" id="message">
+                please be careful.
+            </div>
+
+
+            <!-- START BUTTON -->
+            <button id="startButton">
+                START
+            </button>
+
+        </section>
+
+
+        <!-- BOTTOM NOTES -->
+        <div class="bottom-note left">
+            SUBJECT: EGG<br>
+            STATUS: STABLE
+        </div>
+
+        <div class="bottom-note right">
+            probably.
+        </div>
+
+    </main>
+
+
+    <script src="game.js"></script>
+
+</body>
+
+</html>

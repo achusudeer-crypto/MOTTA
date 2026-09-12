@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOTTA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="intro">
+
+        <!-- TOP SMALL WARNING -->
+        <div class="warning" id="warning">
+            ⚠️ WARNING: VERY IMPORTANT EGG
+        </div>
+
+        <!-- CORNER SMALL WRITINGS -->
+        <div class="side-text left">
+            PLAYER: YOU<br>
+            BRAIN: OPTIONAL
+        </div>
+
+        <div class="side-text right">
+            MISSION<br>
+            DON'T LET HIM DIE
+        </div>
+
+        <!-- FIRST NORMAL EGG (ROLLS IN) -->
+        <div class="egg-container" id="eggContainer">
+            <img src="assets/simplemotta-removebg-preview.png" alt="Motta" class="egg">
+        </div>
+
+        <!-- 1. MOTTA TITLE (TOP) -->
+        <section class="title-container" id="titleContainer">
+            <h1 class="motta-title">
+                M<img src="assets/omlette-removebg-preview.png" alt="O">TTA
+            </h1>
+        </section>
+
+        <!-- 2. BUFF MOTTA (CENTER HERO - BIG & GUARANTEED VISIBLE) -->
+        <div class="muscle-container" id="muscleContainer">
+            <img src="assets/muscle-removebg-preview.png" alt="Muscle Motta" class="muscle-egg">
+        </div>
+
+        <!-- 3. 3D PEDESTAL DOCK (BOTTOM) -->
+        <section class="pedestal" id="actionContainer">
+            <div class="pedestal-top"></div>
+            <div class="pedestal-front">
+                <p class="mission-tagline">KEEP THIS EGG ALIVE</p>
+                
+                <div class="timer-badge">
+                    ⏱ 60 SECONDS
+                </div>
+
+                <div class="btn-casing">
+                    <button id="continueButton" class="arcade-btn">
+                        START GAME
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CRACK EFFECT -->
+        <div class="crack" id="crack">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
